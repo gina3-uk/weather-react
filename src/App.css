@@ -8,3 +8,9 @@ h1 {
   font-size: 54px;
   font-family: "Lobster", cursive;
 }
+
+footer {
+  margin-top: 75px;
+  font-size: 14px;
+  color: grey;
+}
