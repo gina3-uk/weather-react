@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
-import Search from "./Search";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Search from "./Search";
 
 export default function App() {
   return (

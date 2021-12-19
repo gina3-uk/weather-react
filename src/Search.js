@@ -1,7 +1,7 @@
-import "./search.css";
 import React, { useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./search.css";
 
 export default function Search() {
   const [city, setCity] = useState("");
@@ -10,7 +10,7 @@ export default function Search() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let apiKey = "ac730adc7d8efa5c2d9bf7cf3f38ab81";
+    const apiKey = "ac730adc7d8efa5c2d9bf7cf3f38ab81";
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     axios.get(url).then(displayForecast);
@@ -21,11 +21,13 @@ export default function Search() {
     setWeather({
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
-      feels: response.data.main.feels_like,
+      max: response.data.main.temp_max,
+      min: response.data.main.temp_min,
       description: response.data.weather[0].main,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       humidity: response.data.main.humidity,
       cityName: response.data.name,
+      date: response.data.dt * 1000,
     });
   }
 
@@ -36,10 +38,28 @@ export default function Search() {
   let form = (
     <div className="Search">
       <form onSubmit={handleSubmit}>
-        <input type="search" placeholder="Enter a city" onChange={updateCity} />
-        <button className="btn search" type="Submit">
-          Search
-        </button>
+        <div class="row search-bar">
+          <div class="col-sm-6">
+            <input
+              type="search"
+              className="form-control"
+              placeholder="Enter a city..."
+              aria-label="Enter a city..."
+              autoFocus="on"
+              onChange={updateCity}
+            />
+          </div>
+          <div class="col-sm-3">
+            <button type="submit" className="g-3 btn search-button w-100">
+              Search
+            </button>
+          </div>
+          <div class="col-sm-3">
+            <button type="submit" className="g-3 btn search-button w-100">
+              Current
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );
@@ -51,10 +71,14 @@ export default function Search() {
         <ul>
           <li>
             <h3>{weather.cityName}</h3>
+            <h4>
+              <i>{weather.date}</i>
+            </h4>
           </li>
           <li>Temperature: {Math.round(weather.temperature)}°C </li>
+          <li>Max temp: {Math.round(weather.max)}°C </li>
+          <li>Min temp: {Math.round(weather.min)}°C </li>
           <li>Wind speed: {Math.round(weather.wind * 2.237)} mph</li>
-          <li>Feels Like: {Math.round(weather.temperature)}°C </li>
           <li>Humidity: {Math.round(weather.humidity)} %</li>
           <li>
             {weather.description}
