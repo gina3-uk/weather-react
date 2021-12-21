@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./search.css";
+import FormattedDate from "./FormattedDate";
 
 export default function Search() {
   const [city, setCity] = useState("");
@@ -27,7 +28,6 @@ export default function Search() {
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       humidity: response.data.main.humidity,
       cityName: response.data.name,
-      date: response.data.dt * 1000,
     });
   }
 
@@ -72,7 +72,9 @@ export default function Search() {
           <li>
             <h3>{weather.cityName}</h3>
             <h4>
-              <i>{weather.date}</i>
+              <i>
+                <FormattedDate />
+              </i>
             </h4>
           </li>
           <li>Temperature: {Math.round(weather.temperature)}°C </li>
