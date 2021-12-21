@@ -8,7 +8,7 @@ export default function App() {
     <div className="App">
       <div className="container">
         <h1>React Weather App</h1>
-        <Search />
+        <Search defaultCity="London" />
         <footer>
           This project was created by Gina Lewis. Open source code available on{" "}
           <a
