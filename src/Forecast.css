@@ -1,0 +1,27 @@
+.Forecast {
+  margin-top: 45px;
+}
+
+.ForecastDay {
+  font-size: 18px;
+  margin-bottom: 0px;
+}
+
+.ForecastTemp {
+  font-size: 12px;
+}
+
+.ForecastIcon {
+}
+
+ul {
+  list-style: none;
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+  padding-left: 0px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 12px 12px 2px 1px rgba(46, 56, 82, 0.322);
+  transform: rotate(-1.5deg);
+}
