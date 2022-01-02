@@ -1,7 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
-import TemperatureInfo from "./TemperatureInfo";
 import "./WeatherInfo.css";
 
 export default function WeatherInfo(props) {
@@ -19,7 +18,7 @@ export default function WeatherInfo(props) {
           </h4>
         </li>
         <li className="mainTemp">
-          <TemperatureInfo celsuis={props.data.temperature} />
+          Temperature: {Math.round(props.data.temperature)}°C
         </li>
         <li className="secondaryTemps">
           Max temp: {Math.round(props.data.max)}°C
