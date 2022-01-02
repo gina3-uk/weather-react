@@ -30,6 +30,8 @@ export default function Forecast(props) {
                   <ForecastDay data={fourDayForecast} />
                 </span>
               );
+            } else {
+              return null;
             }
           })}
         </ul>
