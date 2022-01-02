@@ -11,7 +11,7 @@ export default function WeatherInfo(props) {
         <li>
           <h3>{props.data.city}</h3>
         </li>
-        <li>
+        <li className="pt-2">
           <h4>
             <i>
               <FormattedDate />
@@ -22,8 +22,10 @@ export default function WeatherInfo(props) {
           <TemperatureInfo celsuis={props.data.temperature} />
         </li>
         <li className="secondaryTemps">
-          Max temp: {Math.round(props.data.max)}°C | Min temp:{" "}
-          {Math.round(props.data.min)}°C{" "}
+          Max temp: {Math.round(props.data.max)}°C
+        </li>
+        <li className="secondaryTemps">
+          Min temp: {Math.round(props.data.min)}°C{" "}
         </li>
         <li>Wind speed: {Math.round(props.data.wind * 2.237)} mph</li>
         <li>Humidity: {Math.round(props.data.humidity)} %</li>
@@ -32,6 +34,7 @@ export default function WeatherInfo(props) {
           <br />
           <WeatherIcon code={props.data.icon} size={50} />
         </li>
+        <br />
       </ul>
     </div>
   );
